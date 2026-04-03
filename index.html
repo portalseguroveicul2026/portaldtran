@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mysa S/A - Sua Loja de Materiais de Construção em Juiz de Fora</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #f4a261;
+            --accent-color: #2a9d8f;
+            --dark-color: #264653;
+            --light-color: #f8f9fa;
+            --warning-color: #e9c46a;
+        }
+        
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+        }
+        
+        .navbar-brand small {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--warning-color);
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--warning-color) !important;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 140px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            color: var(--secondary-color);
+        }
+        
+        /* Feature Icons */
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: 0.3s;
+        }
+        
+        .feature-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+        
+        /* Cards */
+        .product-card, .service-card {
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .product-card:hover, .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+        
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .promo-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        /* Botões */
+        .btn-primary-custom {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .btn-primary-custom:hover {
+            background: #c1121f;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-custom {
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+        }
+        
+        /* Depoimentos */
+        .testimonial-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+        
+        /* Contato */
+        .contact-section {
+            background: var(--dark-color);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a2a36;
+            color: white;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+        
+        /* Categorias */
+        .category-item {
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .category-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            transition: 0.3s;
+        }
+        
+        .category-item:hover .category-icon {
+            background: var(--primary-color);
+        }
+        
+        .category-item:hover .category-icon i {
+            color: white;
+        }
+        
+        .category-icon i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-hard-hat me-2"></i>Mysa S/A
+                <small class="d-block">Materiais de Construção</small>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#produtos">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <h1>Construa com <span class="highlight">Qualidade</span></h1>
+            <p class="lead mb-4">Há mais de 7 anos fornecendo os melhores materiais de construção para Juiz de Fora e região</p>
+            <a href="#produtos" class="btn btn-primary-custom me-3">Nossos Produtos</a>
+            <a href="https://wa.me/5532999999999" class="btn btn-outline-custom" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i>Orçamento Rápido
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                    <div class="stat-number">7+</div>
+                    <p>Anos de Experiência</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                    <div class="stat-number">8.000+</div>
+                    <p>Clientes Atendidos</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                    <div class="stat-number">3.000+</div>
+                    <p>Produtos Disponíveis</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                    <div class="stat-number">24h</div>
+                    <p>Entrega Rápida</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorias -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Categorias em <span class="highlight">Destaque</span></h2>
+                <p class="lead">Encontre tudo que você precisa para sua obra</p>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-sm-4 col-6 mb-4">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h6>Ferramentas</h6>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-6 mb-4">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-paint-roller"></i>
+                        </div>
+                        <h6>Tintas</h6>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-6 mb-4">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-bath"></i>
+                        </div>
+                        <h6>Hidráulica</h6>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-6 mb-4">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h6>Elétrica</h6>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-6 mb-4">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                        <h6>Acabamento</h6>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-6 mb-4">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h6>Estrutura</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos -->
+    <section id="produtos" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Produtos em <span class="highlight">Destaque</span></h2>
+                <p class="lead">Os mais vendidos com os melhores preços</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-card card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1565043666747-69f6646b9402?ixlib=rb-4.0.3" class="card-img-top" alt="Cimento">
+                            <div class="promo-badge">-10%</div>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Cimento CP-II</h5>
+                            <p class="card-text text-muted">Cimento Portland de alta qualidade</p>
+                            <p class="h4 text-primary">R$ 32,90</p>
+                            <p class="text-muted small"><s>R$ 36,90</s></p>
+                            <button class="btn btn-primary-custom btn-sm w-100">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-card card h-100">
+                        <img src="https://images.unsplash.com/photo-1548883354-94bcfe321c3c?ixlib=rb-4.0.3" class="card-img-top" alt="Tijolos">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Tijolo Baiano</h5>
+                            <p class="card-text text-muted">Tijolo furado 9x14x19</p>
+                            <p class="h4 text-primary">R$ 1.200,00</p>
+                            <p class="text-muted small">/milheiro</p>
+                            <button class="btn btn-primary-custom btn-sm w-100">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-card card h-100">
+                        <img src="https://images.unsplash.com/photo-1575146431738-3d24ebf3e30d?ixlib=rb-4.0.3" class="card-img-top" alt="Tintas">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Tinta Acrílica</h5>
+                            <p class="card-text text-muted">Tinta para paredes 18L</p>
+                            <p class="h4 text-primary">R$ 189,90</p>
+                            <button class="btn btn-primary-custom btn-sm w-100">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-card card h-100">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3" class="card-img-top" alt="Ferramentas">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Kit Ferramentas</h5>
+                            <p class="card-text text-muted">Kit básico 15 peças</p>
+                            <p class="h4 text-primary">R$ 89,90</p>
+                            <button class="btn btn-primary-custom btn-sm w-100">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary-custom">Ver Todos os Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Nossos <span class="highlight">Serviços</span></h2>
+                <p class="lead">Oferecemos soluções completas para sua construção</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card card text-center p-4 h-100">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h4 class="fw-bold mt-3">Entrega Rápida</h4>
+                        <p>Entregamos seus materiais com segurança e pontualidade em Juiz de Fora e região metropolitana.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card card text-center p-4 h-100">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h4 class="fw-bold mt-3">Orçamento Grátis</h4>
+                        <p>Solicite um orçamento sem compromisso para sua obra ou reforma. Atendimento personalizado.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card card text-center p-4 h-100">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-paint-roller"></i>
+                        </div>
+                        <h4 class="fw-bold mt-3">Serviços de Pintura</h4>
+                        <p>Equipe especializada para serviços de pintura residencial e comercial com qualidade garantida.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card card text-center p-4 h-100">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h4 class="fw-bold mt-3">Mão de Obra</h4>
+                        <p>Indicamos profissionais qualificados para sua obra: pedreiros, eletricistas e encanadores.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card card text-center p-4 h-100">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h4 class="fw-bold mt-3">Consultoria Técnica</h4>
+                        <p>Orientação especializada para escolha dos melhores materiais e economia na sua obra.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card card text-center p-4 h-100">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4 class="fw-bold mt-3">Parcele no Cartão</h4>
+                        <p>Aceitamos cartões de crédito e débito com parcelamento em até 12x sem juros.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3" alt="Loja Mysa S/A" class="img-fluid rounded-4 shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Sobre a <span class="highlight">Mysa S/A</span></h2>
+                    <p class="lead">Sua parceira na construção e reforma desde 2018.</p>
+                    <p>Fundada em 16/01/2018, a Mysa S/A se consolidou como referência em materiais de construção em Juiz de Fora e região. Oferecemos produtos de qualidade com preços competitivos e atendimento personalizado.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-building me-3 mt-1 fs-4 text-primary"></i>
+                                <div>
+                                    <h6 class="fw-bold">Razão Social</h6>
+                                    <p class="mb-0">Mysa S/A</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-id-card me-3 mt-1 fs-4 text-primary"></i>
+                                <div>
+                                    <h6 class="fw-bold">CNPJ</h6>
+                                    <p class="mb-0">38.542.718/0052-22</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="fas fa-map-marker-alt me-3 mt-1 fs-4 text-primary"></i>
+                        <div>
+                            <h6 class="fw-bold">Endereço</h6>
+                            <p class="mb-0">Avenida Francisco Bernardino, 165 - Centro<br>Juiz de Fora - MG | CEP: 36013-100</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="far fa-calendar-alt me-3 mt-1 fs-4 text-primary"></i>
+                        <div>
+                            <h6 class="fw-bold">Data de Abertura</h6>
+                            <p class="mb-0">16 de Janeiro de 2018</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">O que nossos <span class="highlight">Clientes</span> dizem</h2>
+                <p class="lead">Depoimentos de quem confia na Mysa S/A</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-user-circle fa-3x text-primary me-3"></i>
+                            <div>
+                                <h5 class="mb-0 fw-bold">João Silva</h5>
+                                <small class="text-muted">Engenheiro Civil</small>
+                            </div>
+                        </div>
+                        <p>"Excelente loja! Encontrei tudo que precisava para minha obra com ótimo preço e atendimento diferenciado. Recomendo a todos!"</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-user-circle fa-3x text-primary me-3"></i>
+                            <div>
+                                <h5 class="mb-0 fw-bold">Maria Santos</h5>
+                                <small class="text-muted">Arquiteta</small>
+                            </div>
+                        </div>
+                        <p>"Sempre compro meus materiais aqui. Qualidade garantida, variedade de produtos e entregam no prazo. Nota 10!"</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-user-circle fa-3x text-primary me-3"></i>
+                            <div>
+                                <h5 class="mb-0 fw-bold">Carlos Oliveira</h5>
+                                <small class="text-muted">Mestre de Obras</small>
+                            </div>
+                        </div>
+                        <p>"Ótimo atendimento e preços justos. A equipe é muito prestativa e sempre me ajuda a escolher os melhores produtos."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="contact-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="fw-bold mb-4">Fale com a <span class="highlight">Mysa S/A</span></h2>
+                    <p class="lead mb-4">Estamos prontos para atender você da melhor forma possível.</p>
+                    
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="fas fa-map-marker-alt me-3 mt-1 fs-5"></i>
+                        <div>
+                            <h5>Endereço</h5>
+                            <p>Avenida Francisco Bernardino, 165 - Centro<br>Juiz de Fora - MG<br>CEP: 36013-100</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="fas fa-phone-alt me-3 mt-1 fs-5"></i>
+                        <div>
+                            <h5>Telefone</h5>
+                            <p>(32) 99999-9999</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="fab fa-whatsapp me-3 mt-1 fs-5"></i>
+                        <div>
+                            <h5>WhatsApp</h5>
+                            <p>(32) 99999-9999</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="fas fa-envelope me-3 mt-1 fs-5"></i>
+                        <div>
+                            <h5>Email</h5>
+                            <p>contato@mysa.com.br</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5>Horário de Funcionamento</h5>
+                        <p><i class="far fa-clock me-2"></i>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h<br>Domingo: Fechado</p>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5>Redes Sociais</h5>
+                        <div class="d-flex">
+                            <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card shadow rounded-4">
+                        <div class="card-body p-4">
+                            <h3 class="card-title text-center mb-4">Solicite um Orçamento</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label fw-bold">Nome completo</label>
+                                    <input type="text" class="form-control" id="nome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label fw-bold">Email</label>
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefone" class="form-label fw-bold">Telefone</label>
+                                    <input type="tel" class="form-control" id="telefone" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="servico" class="form-label fw-bold">Tipo de Serviço/Produto</label>
+                                    <select class="form-select" id="servico">
+                                        <option selected>Selecione...</option>
+                                        <option>Materiais para Construção</option>
+                                        <option>Serviços de Pintura</option>
+                                        <option>Orçamento de Obra</option>
+                                        <option>Outros</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mensagem" class="form-label fw-bold">Mensagem</label>
+                                    <textarea class="form-control" id="mensagem" rows="3" placeholder="Descreva o que você precisa..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary-custom w-100">Enviar Mensagem</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa -->
+    <section class="p-0">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.254332138973!2d-43.350928!3d-21.764999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDQ1JzU0LjAiUyA0M8KwMjEnMDMuMiJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5><i class="fas fa-hard-hat me-2"></i>Mysa S/A</h5>
+                    <p class="small">Sua loja de materiais de construção em Juiz de Fora, oferecendo qualidade e confiança desde 2018.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio" class="text-white text-decoration-none">Início</a></li>
+                        <li><a href="#produtos" class="text-white text-decoration-none">Produtos</a></li>
+                        <li><a href="#servicos" class="text-white text-decoration-none">Serviços</a></li>
+                        <li><a href="#contato" class="text-white text-decoration-none">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Informações</h5>
+                    <ul class="list-unstyled small">
+                        <li>CNPJ: 38.542.718/0052-22</li>
+                        <li>Razão Social: Mysa S/A</li>
+                        <li>Nome Fantasia: Mysa S/A</li>
+                        <li>Data de Abertura: 16/01/2018</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center small">
+                <p class="mb-0">&copy; 2024 Mysa S/A - Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5532999999999" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
